@@ -31,5 +31,6 @@ Route::group(['middleware' => ['auth']], function () {
     Route::post('addnote/save', [DashboardController::class, 'save_note'])->name('addnote/save');
     Route::get('listnote', [DashboardController::class, 'list_note'])->name('listnote');
     Route::put('listnote/update', [DashboardController::class, 'update_note'])->name('listnote/update');
+    Route::get('listnote/update', [DashboardController::class, 'update_note'])->name('listnote/update');
     Route::get('listnote/delete/{id}', [DashboardController::class, 'delete_note'])->name('listnote/delete/{id}');
 });

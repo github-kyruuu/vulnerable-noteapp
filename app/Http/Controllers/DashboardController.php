@@ -59,12 +59,17 @@ class DashboardController extends Controller
         $id = $request->id;
         $title = $request->title;
         $note = $request->note;
+        $method = $request->_method;
 
         $notes = Note::find($id);
+        echo "last note history :\n" . $notes;
         $notes->title = $title;
         $notes->note = $note;
-        $notes->save();
-        return back()->with('success', 'Note Successfully Updated');
+        if ($method == 'put') {
+            $notes->save();
+            echo "updated note :\n" .  $notes;
+            return back()->with('success', 'Note Successfully Updated');
+        }
         return redirect('/listnote');
     }
 
